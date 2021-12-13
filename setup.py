@@ -5,13 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="odata1cw",
-    version="0.0.4",
-    author="Ilia Belov",
-    author_email="belov.penrose@gmail.com",
+    version="0.0.5",
+    author="Ilia Belov, Sergeu Ruzki",
+    author_email="sergei.ruzki@gmail.com",
     description="1C-Odata wrapper",
     long_description="1C (v8.1c.ru) OData wrapper.",
     long_description_content_type="text/markdown",
-    url="https://github.com/belov38/1c-odata",
+    url="https://github.com/SkiBY/1c-odata",
     packages=setuptools.find_packages(),
     install_requires=[
           'requests',
