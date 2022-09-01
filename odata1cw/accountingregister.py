@@ -15,13 +15,18 @@ class AccountingRegister:
         self.url = self.infobase._full_url.format(
             obj='AccountingRegister_'+self.regname)
 
-    def query(self, top=None, skip=None, select=None, odata_filter=None, expand=None):
+    def query(self, top=None, skip=None, select=None, odata_filter=None, expand=None, orderby=None):
         _url_top = make_url_part('top', top, int)
         _url_skip = make_url_part('skip', skip, int)
         _url_select = make_url_part('select', select, str)
         _url_filter = make_url_part('filter', odata_filter, str)
         _url_expand = make_url_part('expand', expand, str)
         url = self.url + _url_top + _url_skip + _url_select + _url_filter + _url_expand
+
+        if orderby:
+            _url_orderby = make_url_part('orderby', orderby, str)
+            url += _url_orderby
+
         r = requests.get(url, auth=self.infobase._auth,
                          headers=self.infobase._headers)
         if(r.status_code != 200):

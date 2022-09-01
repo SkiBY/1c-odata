@@ -15,7 +15,7 @@ class ChartOfAccountsRegister:
         self.url = self.infobase._full_url.format(
             obj='ChartOfAccounts_'+self.regname)
 
-    def query(self, top=None, skip=None, select=None, odata_filter=None, expand=None):
+    def query(self, top=None, skip=None, select=None, odata_filter=None, expand=None, orderby=None):
         _url_top = make_url_part('top', top, int)
         _url_skip = make_url_part('skip', skip, int)
         _url_select = make_url_part('select', select, str)
