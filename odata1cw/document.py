@@ -100,6 +100,7 @@ class Document:
         if r.status_code != 201:
             _logger.error(r.text)
             _logger.error('Debug Data'.center(60, '.'))
+            _logger.error(self.url)
             _logger.error(json.dumps(data))
             raise Exception(r.text)
 
