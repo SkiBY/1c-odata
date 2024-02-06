@@ -1,11 +1,11 @@
 import json
-
+import logging
 import requests
 
 from odata1cw.core import Infobase
 from odata1cw.postingmode import PostingMode
 from odata1cw.utils import make_url_part
-
+_logger = logging.getLogger(__name__)
 
 class Document:
     infobase: Infobase
@@ -63,6 +63,7 @@ class Document:
         r = requests.post(url, auth=self.infobase._auth,
                           headers=self.infobase._headers)
         if(r.status_code != 200):
+
             raise Exception(r.text)
 
     def unpost(self, guid):
@@ -97,6 +98,9 @@ class Document:
         r = requests.post(self.url, auth=self.infobase._auth,
                           headers=self.infobase._headers, data=json.dumps(data))
         if r.status_code != 201:
+            _logger.error(r.text)
+            _logger.error('Debug Data'.center(60, '.'))
+            _logger.error(json.dumps(data))
             raise Exception(r.text)
 
         new_doc = json.loads(r.text)
